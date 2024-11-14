@@ -1,0 +1,70 @@
+\documentclass{article}
+\pagestyle{plain}
+\usepackage[a4paper, margin=.8in]{geometry}
+
+\usepackage{amssymb}
+\usepackage{varwidth}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{bm}
+\usepackage{pdfpages}
+
+\usepackage[utf8]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}
+
+\usepackage{graphicx}
+\graphicspath{ {./} }
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary {arrows.meta, decorations.markings, calc}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+	\fancyhf{}%
+
+	\fancyhead{}
+	\fancyhead[L]{Vári Gergő}
+	\fancyhead[C]{MQHJ0H}
+	\fancyhead[R]{\includegraphics[scale=.25]{signature}}
+	\setlength{\headheight}{16.5pt}
+
+	\fancyfoot{}
+	\fancyfoot[C]{\thepage}
+}
+
+\title{Statika 4. HF}
+\author{Vári Gergő}
+\date{
+	\parbox{\linewidth}{
+		\centering
+		\today\endgraf\bigskip
+		\includegraphics[scale=.4]{shear}
+	}
+}
+
+\pgfmathsetmacro{\a}{0.6}
+\pgfmathsetmacro{\b}{0.6}
+\pgfmathsetmacro{\c}{0.5}
+\pgfmathsetmacro{\k}{0.1}
+\pgfmathsetmacro{\p}{5}
+\pgfmathsetmacro{\F}{4}
+
+\newcommand{\pnum}[1]{%
+	\pgfmathprintnumber[fixed]{#1}
+}
+
+\begin{document}
+
+% \includepdf[pages={1}]{sthf4-final.pdf}
+
+\maketitle
+
+\include{meretarany.tex}
+\include{igenybevetel.tex}
+\include{igenybevetelabrak.tex}
+
+\end{document}
