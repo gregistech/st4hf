@@ -1,6 +1,6 @@
 
-\pgfmathsetmacro{\unitm}{5}
-\pgfmathsetmacro{\shownm}{5}
+\pgfmathsetmacro{\unitm}{8}
+\pgfmathsetmacro{\shownm}{1/8}
 \pgfmathsetmacro{\unitkn}{1}
 \pgfmathsetmacro{\shownkn}{1}
 
@@ -14,8 +14,8 @@
 \pgfmathsetmacro{\as}{\a * \unitm}
 \pgfmathsetmacro{\bs}{\b * \unitm}
 \pgfmathsetmacro{\cs}{\c * \unitm}
+\pgfmathsetmacro{\ks}{\k * \unitm}
 
-\pgfmathsetmacro{\ks}{\k * \unitkn}
 \pgfmathsetmacro{\ps}{\p * \unitkn}
 \pgfmathsetmacro{\Fs}{\F * \unitkn}
 
@@ -44,186 +44,52 @@
 	\coordinate (B) at (\as + \bs + \cs, \ks);
 	\coordinate (C) at (\as, 0);
 	\coordinate (F) at (\as + \bs, 0);
-	
-	% done until this
 
-	\draw[line width = 0.1mm] (-1,0) -- (E);
-	\draw[line width = 0.1mm] (-1,\cs) -- (G);
-	\draw[line width = 0.1mm] (A)++(0,2) -- ++(0,-\cs-4);
-	\draw[line width = 0.1mm] (D)++(0,2) -- ++(0,-\cs-4);
-	\draw[line width = 0.1mm] (F)++(0,2) -- ++(0,-\cs-4);
-	\draw[line width = 0.1mm] (G)++(0,2) -- ++(0,-\cs-4);
+	\foreach \point in {A, C, F} {
+		\draw[line width = 0.1mm] (\point) -- ++(0,-2);
+	}
+	\draw[line width = 0.1mm] (B) -- ++(0,-2-\ks);
+	\draw[line width = 0.1mm] (B) -- ++(1,0);
+	\draw[line width = 0.1mm] (B)++(0, -\ks) -- ++(1,0);
 
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (-1,0) -- ++(0,\cs) node[midway, left] {c};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (0,-1) -- ++(\as,0) node[midway, below] {a};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (\as,-1) -- ++(\as,0) node[midway, below] {a};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (2*\as,-1) -- ++(\bs,0) node[midway, below] {b};
+	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (A)++(0,-2) -- ($ (C) + (0,-2) $) node[midway, below] {a};
+	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (C)++(0,-2) -- ($ (F) + (0,-2) $) node[midway, below] {b};
+	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (F)++(0,-2) -- ($ (B) + (0,-\ks-2) $) node[midway, below] {c};
+	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (B)++(1,0) -- ++(0,-\ks) node[midway, right] {k};
 	
 	\pgfmathsetmacro{\framewidth}{.7mm}
-	\draw[line width = \framewidth, arrows = {-}] (A) -- (E) node[midway, anchor=north east] {1};
-	\draw[line width = \framewidth, arrows = {-}] (A) -- (D) node[midway, above] {2};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (E) node[midway, left] {3};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (F) node[midway, above] {4};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (C) node[midway, anchor=south west] {5};
-	\draw[line width = \framewidth, arrows = {-}] (E) -- (C) node[midway, below] {6};
-	\draw[line width = \framewidth, arrows = {-}] (F) -- (C) node[midway, right] {7};
-	\draw[line width = \framewidth, arrows = {-}] (C) -- (B) node[midway, below] {8};
-	\draw[line width = \framewidth, arrows = {-}] (C) -- (G) node[midway, anchor=north west] {9};
-	\draw[line width = \framewidth, arrows = {-}] (B) -- (G) node[midway, right] {10};
+	\draw[line width = \framewidth, arrows = {-}] (A) -- ($ (B) + (0, -\ks) $);
+	\draw[line width = \framewidth, arrows = {-}] (B) -- ++(0, -\ks);
+	% little triangle in corner under B
 
-	\foreach \point/\name in {A, D, F, G} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=south west] {\name};
-	}
-	\foreach \point/\name in {C} {
-		\fill[white] (\point) circle[radius=2.5pt];
+	\foreach \point/\name in {A, C} {
 		\draw[thick] (\point) circle[radius=2pt] node[anchor=north west] {\name};
 	}
-	\foreach \point/\name in {B, E} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=south west] {\name};
-	}
-}
-
-\pgfmathsetmacro{\unitmp}{1}
-\pgfmathsetmacro{\shownmp}{1}
-\pgfmathsetmacro{\unitknp}{1/10}
-\pgfmathsetmacro{\shownknp}{10}
-
-\pgfmathsetmacro{\asp}{\a * \unitmp}
-\pgfmathsetmacro{\bsp}{\b * \unitmp}
-\pgfmathsetmacro{\csp}{\c * \unitmp}
-
-\pgfmathsetmacro{\Fasp}{\Fa * \unitknp}
-\pgfmathsetmacro{\Fbsp}{\Fb * \unitknp}
-\pgfmathsetmacro{\Fcsp}{\Fc * \unitknp}
-
-\newcommand{\strucframepartone}{%
-	\coordinate (A) at (0, \csp);
-	\coordinate (C) at (2*\asp, 0);
-	\coordinate (D) at (\asp, \csp);
-	\coordinate (E) at (\asp, 0);
-	\coordinate (F) at (2*\asp, \csp);
-
-	\draw[line width = 0.1mm] (-1,0) -- (E);
-	\draw[line width = 0.1mm] (-1,\csp) -- (F);
-	\draw[line width = 0.1mm] (A)++(0,2) -- ++(0,-\csp-4);
-	\draw[line width = 0.1mm] (D)++(0,2) -- ++(0,-\csp-4);
-	\draw[line width = 0.1mm] (F)++(0,2) -- ++(0,-\csp-4);
-
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (-1,0) -- ++(0,\csp) node[midway, left] {c};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (0,-1) -- ++(\asp,0) node[midway, below] {a};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (\asp,-1) -- ++(\asp,0) node[midway, below] {a};
-
-	\pgfmathsetmacro{\framewidth}{.7mm}
-	\draw[line width = \framewidth, arrows = {-}] (A) -- (E) node[midway, anchor=north east] {1};
-	\draw[line width = \framewidth, arrows = {-}] (A) -- (D) node[midway, above] {2};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (E) node[midway, left] {3};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (F) node[midway, above] {4};
-	\draw[line width = \framewidth, arrows = {-}] (D) -- (C) node[midway, anchor=south west] {5};
-	\draw[line width = \framewidth, arrows = {-}] (E) -- (C) node[midway, below] {6};
-	\draw[line width = \framewidth, arrows = {-}] (F) -- (C) node[midway, right] {7};
-
-	\foreach \point/\name in {A, D, F} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=south west] {\name};
-	}
-	\foreach \point/\name in {C} {
+	\foreach \point/\name in {F} {
 		\fill[white] (\point) circle[radius=2.5pt];
 		\draw[thick] (\point) circle[radius=2pt] node[anchor=north west] {\name};
-	}
-	\foreach \point/\name in {E} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=south west] {\name};
-	}
-}
-\newcommand{\strucforcespartone}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, blue] (F) -- ++(\Fcsp, 0) node[midway, above] {$F_3$};
-	\draw[line width = .8mm, arrows = {-Stealth}, blue] (E) -- ++(0, -\Fasp) node[right] {$F_1$};
-}
-\newcommand{\strucrestrainforcespartone}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(-1.25, 0) -- (A) node[midway, above] {$A_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(0, -1.25) -- (A) node[midway, left] {$A_y$};
-}
-\newcommand{\struccutforcespartone}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, orange] (C) -- ++(1.25, 0) node[midway, above] {$C_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, orange] (C)++(0, -1.25) -- (C) node[midway, right] {$C_y$};
-}
-
-\newcommand{\strucframeparttwo}{%
-	\coordinate (B) at (2*\asp + \bsp, 0);
-	\coordinate (C) at (2*\asp, 0);
-	\coordinate (G) at (2*\asp + \bsp, \csp);
-
-	\draw[line width = 0.1mm] (G)+(-3.5, 0) -- ++(1.5,0);
-	\draw[line width = 0.1mm] (B)+(-3.5, 0) -- ++(1.5,0);
-	\draw[line width = 0.1mm] (C)+(0, 3.5) -- ++(0,-1.5);
-	\draw[line width = 0.1mm] (B)+(0, 3.5) -- ++(0,-1.5);
-
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (2*\asp+\bsp+1,0) -- ++(0,\csp) node[midway, right] {c};
-	\draw[line width = 0.2mm, arrows = {Latex-Latex}] (2*\asp,-1) -- ++(\bsp,0) node[midway, below] {b};
-	
-	\pgfmathsetmacro{\framewidth}{.7mm}
-	\draw[line width = \framewidth, arrows = {-}] (C) -- (B) node[midway, below] {8};
-	\draw[line width = \framewidth, arrows = {-}] (C) -- (G) node[midway, anchor=south east] {9};
-	\draw[line width = \framewidth, arrows = {-}] (B) -- (G) node[midway, right] {10};
-
-	\foreach \point/\name in {G} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=south east] {\name};
-	}
-	\foreach \point/\name in {C} {
-		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=north east] {\name};
 	}
 	\foreach \point/\name in {B} {
 		\fill[white] (\point) circle[radius=2.5pt];
-		\draw[thick] (\point) circle[radius=2pt] node[anchor=north west] {\name};
+		\draw[thick] (\point) circle[radius=2pt] node[anchor=south east] {\name};
 	}
-}
-\newcommand{\strucforcesparttwo}{%
-	\draw[line width = .8mm, arrows = {Stealth-}, blue] (G) -- ++(\Fbsp, 0) node[midway, above] {$F_2$};
-}
-\newcommand{\strucrestrainforcesparttwo}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B) -- ++(1.25, 0) node[midway, above] {$B_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B)++(0, -1.25) -- (B) node[midway, right] {$B_y$};
-}
-\newcommand{\struccutforcesparttwo}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, orange] (C) -- ++(-1.25, 0) node[midway, above] {$C_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, orange] (C) -- ++(0, -1.25) node[midway, right] {$C_y$};
 }
 
 \newcommand{\strucforces}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, blue] (F) -- ++(\Fcs, 0) node[midway, above] {$F_3$};
-	\draw[line width = .8mm, arrows = {-Stealth}, blue] (E) -- ++(0, -\Fas) node[right] {$F_1$};
-	\draw[line width = .8mm, arrows = {Stealth-}, blue] (G) -- ++(\Fbs, 0) node[midway, above] {$F_2$};
+	% \draw[line width = .8mm, arrows = {-Stealth}, blue] (F) -- ++(\Fcs, 0) node[midway, above] {$F_3$};
 }
 
 \newcommand{\strucrestrainforces}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(-2, 0) -- (A) node[midway, above] {$A_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(0, -2) -- (A) node[midway, left] {$A_y$};
-
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B) -- ++(2, 0) node[midway, above] {$B_x$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B)++(0, -2) -- (B) node[midway, right] {$B_y$};
+	% \draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(-2, 0) -- (A) node[midway, above] {$A_x$};
 }
 
 \newcommand{\strucrestraints}{%
 	\pgfmathsetmacro{\restrainsize}{.4}
-	\draw[line width = .4mm, green] (A) -- ++(-\restrainsize, \restrainsize) -- ++(0, -\restrainsize * 2) -- cycle;
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, 0.4) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, 0.2) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, 0) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, -0.2) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, -0.4) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(-\restrainsize, -0.6) -- ++(-0.2, .2);
-
-	\draw[line width = .4mm, green] (B) -- ++(-\restrainsize, -\restrainsize) -- ++(\restrainsize * 2, 0) -- cycle;
-	\draw[line width = .4mm, green] (B)++(-\restrainsize*1.5, -\restrainsize) -- ++(\restrainsize * 2 * 1.5, 0);
-	\draw[line width = .4mm, green] (B)++(0.6, -\restrainsize) -- ++(-0.2, -.2);
-	\draw[line width = .4mm, green] (B)++(0.4, -\restrainsize) -- ++(-0.2, -.2);
-	\draw[line width = .4mm, green] (B)++(0.2, -\restrainsize) -- ++(-0.2, -.2);
-	\draw[line width = .4mm, green] (B)++(0, -\restrainsize) -- ++(-0.2, -.2);
-	\draw[line width = .4mm, green] (B)++(-0.2, -\restrainsize) -- ++(-0.2, -.2);
-	\draw[line width = .4mm, green] (B)++(-0.4, -\restrainsize) -- ++(-0.2, -.2);
+	\draw[line width = .4mm, green] (A)++(0, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
+	\draw[line width = .4mm, green] (A)++(0, 0.4) -- ++(-0.2, .2);
+	\draw[line width = .4mm, green] (A)++(0, 0.2) -- ++(-0.2, .2);
+	\draw[line width = .4mm, green] (A)++(0, 0) -- ++(-0.2, .2);
+	\draw[line width = .4mm, green] (A)++(0, -0.2) -- ++(-0.2, .2);
+	\draw[line width = .4mm, green] (A)++(0, -0.4) -- ++(-0.2, .2);
+	\draw[line width = .4mm, green] (A)++(0, -0.6) -- ++(-0.2, .2);
 }
