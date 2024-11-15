@@ -1,27 +1,12 @@
-% TODO: form for new exercise %
-
-\section{Méretarányos ábra}
-
 \begin{center}
         \strucguide
         \begin{tikzpicture}
                 \strucframe
-                %\strucforces
-                %\strucrestraints
+                \strucforces
+                \strucrestraints
+                \strucsharedforces
         \end{tikzpicture}
 \end{center}
 
 A \textcolor{green}{kényszerek} ábrázolásra kerültek az esetleges félreértések elkerülése érdekében.
-
-\begin{align*}
-        &a = 1.2 \si{[m]} \\
-        &b = 2.0 \si{[m]} \\
-        &c = 1.5 \si{[m]}
-\end{align*}
-
-\begin{align*}
-        F_1 = 20 \si{[kN]} \\
-        F_2 = 32 \si{[kN]} \\
-        F_3 = 13 \si{[kN]}
-\end{align*}
-
+Egy darab külső \textcolor{blue}{erő} jelenik meg $C$ és $B$ között pedig egy \textcolor{orange}{megoszló erő}.
