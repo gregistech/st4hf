@@ -23,7 +23,59 @@
         \begin{tikzpicture}
 		\strucstresscoorded
         \end{tikzpicture}
-	% TODO: sign convention
+
+	\vskip 20pt
+	
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\draw (1, 1) circle (.25) node {1};
+
+			\draw[thick, <-] (0,.25)++(-1,0) -- (0,.25);
+			\draw[thick, ->] (0,.25) -- ++(3,0);
+			\fill[white] (0,0) rectangle ++(2,.5);
+			\draw[thick] (0,0) rectangle ++(2,.5) node[midway] {N};
+
+			\draw[thick, ->] (-.5,-1) -- ++(0,.5);
+			\draw[thick, <-] (2.5,-1) -- ++(0,.5);
+			\fill[white] (0,-1) rectangle ++(2,.5);
+			\draw[thick] (0,-1) rectangle ++(2,.5) node[midway] {V};
+
+			\draw[thick, <-] (-.5,-2) to [bend left] ++(0,.5);
+			\draw[thick, <-] (2.5,-2) to [bend right] ++(0,.5);
+			\fill[white] (0,-2) rectangle ++(2,.5);
+			\draw[thick] (0,-2) rectangle ++(2,.5) node[midway] {$M_\text{h}$};
+			
+			\draw[thick, double, ->] (0,-2.75) -- ++(-1,0);
+			\draw[thick, double, ->] (0,-2.75) -- ++(3,0);
+			\fill[white] (0,-3) rectangle ++(2,.5);
+			\draw[thick] (0,-3) rectangle ++(2,.5) node[midway] {$M_\text{t}$};
+		\end{tikzpicture}
+
+		\begin{tikzpicture}[rotate=90]
+			\draw (1, 1) circle (.25) node {2};
+
+			\draw[thick, <-] (0,.25)++(-1,0) -- (0,.25);
+			\draw[thick, ->] (0,.25) -- ++(3,0);
+			\fill[white] (0,0) rectangle ++(2,.5);
+			\draw[thick] (0,0) rectangle ++(2,.5) node[midway] {N};
+
+			\draw[thick, ->] (-.5,-1) -- ++(0,.5);
+			\draw[thick, <-] (2.5,-1) -- ++(0,.5);
+			\fill[white] (0,-1) rectangle ++(2,.5);
+			\draw[thick] (0,-1) rectangle ++(2,.5) node[midway] {V};
+
+			\draw[thick, <-] (-.5,-2) to [bend left] ++(0,.5);
+			\draw[thick, <-] (2.5,-2) to [bend right] ++(0,.5);
+			\fill[white] (0,-2) rectangle ++(2,.5);
+			\draw[thick] (0,-2) rectangle ++(2,.5) node[midway] {$M_\text{h}$};
+			
+			\draw[thick, double, ->] (0,-2.75) -- ++(-1,0);
+			\draw[thick, double, ->] (0,-2.75) -- ++(3,0);
+			\fill[white] (0,-3) rectangle ++(2,.5);
+			\draw[thick] (0,-3) rectangle ++(2,.5) node[midway] {$M_\text{t}$};
+		\end{tikzpicture}
+	\end{multicols}
+
 \end{center}
 
 \subsection{Függvények felírása}
