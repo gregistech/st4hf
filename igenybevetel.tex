@@ -1,0 +1,27 @@
+\section{Igénybevételi függvények}
+
+\newcommand{\strucstresscoorded}{%
+	\draw[thick,->,gray] (0,0) -- ++(2,0) node[anchor=north west] {$x_\text{1}$};
+	\draw[thick,->,gray] (0,0) -- ++(0,2) node[anchor=south east] {y};
+
+	\draw[thick,->,gray] (\as + \bs + \cs,0) -- ++(0,2) node[anchor=south east] {$x_\text{2}$};
+	\draw[thick,->,gray] (\as + \bs + \cs,0) -- ++(-2,0) node[anchor=north west] {y};
+
+	\strucframe
+	\strucforces
+	\strucsharedforces
+	\strucrestrainforces
+
+	\draw ({(\as + \bs + \cs) / 2}, -.5) circle (.25) node {1};
+	\draw (B)++(.5, -\ks / 2) circle (.25) node {2};
+}
+
+\begin{center}
+        \begin{tikzpicture}
+		\strucstresscoorded
+        \end{tikzpicture}
+\end{center}
+
+% tables
+
+% explanations

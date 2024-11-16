@@ -1,0 +1,277 @@
+\section{Igénybevételi ábrák}
+
+\pgfmathsetmacro{\framewidth}{.7mm}
+
+\subsection{Vízszintes rúd}
+\begin{center}
+        \begin{tikzpicture}
+		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (A)++(0,-2) -- ($ (C) + (0,-2) $) node[midway, below] {a};
+		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (C)++(0,-2) -- ($ (F) + (0,-2) $) node[midway, below] {b};
+		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (F)++(0,-2) -- ($ (B) + (0,-\ks-2) $) node[midway, below] {c};
+
+		\draw[line width = \framewidth, arrows = {-}] (A) -- ($ (B) + (0, -\ks) $);
+		\strucforces
+		\strucsharedforces
+		\strucrestrainforcesa
+
+		\draw[thick,->,gray] (0,0) -- ++(2,0) node[anchor=north west] {$x_\text{1}$};
+		\draw[thick,->,gray] (0,0) -- ++(0,2) node[anchor=south east] {y};
+
+		\pgfmathsetmacro{\drawlength}{20}
+		\draw[line width = 0.1mm, opacity=.3] (\as + \bs + \cs ,0) -- ++(0,-\drawlength);
+		\foreach \point in {A, C, F} {
+			\draw[line width = 0.1mm, opacity=.3] (\point) -- ++(0,-\drawlength);
+		}
+		
+		\begin{axis}[
+			xlabel=$x_\text{1} \si{[m]}$, ylabel=$N(x_\text{1}) \si{[kN]}$,
+			width=15.2cm,
+			height=5cm,
+			xmin=0, xmax=\a + \b + \c,
+			ymin=-7, ymax=0,
+			ytick={0, ..., -5, -6.25},
+			xtick={\a, \a + \b, \a + \b + \c},
+			axis lines = left,
+			axis x line = top,
+			at={(0cm,-8cm)}
+			]
+			\addplot[name path=A,
+				domain=0:\a + \b + \c, 
+				smooth, 
+				line width=2pt, 
+				orange, 
+				] {-6.25};
+			\path [name path=B]
+				(\pgfkeysvalueof{/pgfplots/xmin},0) --
+				(\pgfkeysvalueof{/pgfplots/xmax},0);
+			\addplot [pattern=vertical lines, pattern color=orange] fill between [of=A and B];
+		\end{axis}
+
+		\begin{axis}[
+			xlabel=$x_\text{1} \si{[m]}$, ylabel=$V(x_\text{1}) \si{[kN]}$,
+			width=15.2cm,
+			height=5cm,
+			xmin=0, xmax=\a + \b + \c,
+			ymax=3,
+			xtick={\a, \a + \b, \a + \b + \c},
+			ytick={0, 1.5, -1.5, 2.5},
+			axis lines = left,
+			axis x line = middle,
+			every axis x label/.style={
+				at={(ticklabel* cs:1)},
+				anchor=west,
+			},
+			at={(0cm,-12cm)}
+			]
+			\fill[thick, cyan] (1.2, 2.5) circle[radius=3pt] node[anchor=south west] {\tiny $V(x_\text{V})$};
+			\addplot[name path=A,
+				domain=0:\a, 
+				smooth, 
+				line width=2pt, 
+				green, 
+				] {1.5};
+			\addplot[name path=B,
+				domain=\a:\a + \b, 
+				smooth, 
+				line width=2pt, 
+				green, 
+				] {-5*x+4.5};
+			\addplot[name path=C,
+				domain=\a + \b:\a + \b + \c, 
+				smooth, 
+				line width=2pt, 
+				green, 
+				] {-5*x+8.5};
+			\path [name path=AG]
+				(\pgfkeysvalueof{/pgfplots/xmin},0) --
+				(\a,0);
+			\path [name path=BG]
+				(\a,0) --
+				(\a + \b,0);
+			\path [name path=CG]
+				(\a + \b,0) --
+				(\a + \b + \c,0);
+			\addplot [pattern=vertical lines, pattern color=green] fill between [of=A and AG];
+			\addplot [pattern=vertical lines, pattern color=green] fill between [of=B and BG];
+			\addplot [pattern=vertical lines, pattern color=green] fill between [of=C and CG];
+		\end{axis}
+
+		\begin{axis}[
+			xlabel=$x_\text{1} \si{[m]}$, ylabel=$M_h(x_\text{1}) \si{[kNm]}$,
+			width=15.2cm,
+			height=8cm,
+			xmin=0, xmax=\a + \b + \c,
+			ymin=-1.5, ymax=1.2,
+			xtick={\a, \a + \b, \a + \b + \c, .9},
+			ytick={0, -0.225, -0.445, -0.625, -1.25, .9},
+			axis lines = left,
+			axis x line = middle,
+			every axis x label/.style={
+				at={(ticklabel* cs:1)},
+				anchor=west,
+			},
+			at={(0cm,-19cm)}
+			]
+			\addplot[name path=A,
+				domain=0:\a, 
+				smooth, 
+				line width=2pt, 
+				blue, 
+				] {-1.5*x+0.9};
+			\addplot[
+				domain=0:\a, 
+				dotted, 
+				line width=1pt, 
+				black, 
+				] {.9};
+
+			\addplot[name path=B,
+				domain=\a:\a + \b, 
+				smooth, 
+				line width=2pt, 
+				blue, 
+				] {2.5*x^2-4.5*x+1.8};
+			\addplot[
+				domain=\a:\a + \b, 
+				dotted, 
+				line width=1pt, 
+				black, 
+				] {-(3/2)*x+0.9};
+			\addplot[
+				domain=\a:\a + \b, 
+				dotted, 
+				line width=1pt, 
+				black, 
+				] {(3/2)*x-1.8};
+
+			\fill[thick, cyan] (0, 0.9) circle[radius=3pt] node[anchor=south west] {\tiny $M_\text{h}(x_\text{$M_\text{h}$})$};
+			\node[circle,fill,inner sep=2pt] at (axis cs:0.6,0) {};
+			\node[circle,fill,inner sep=2pt] at (axis cs:1.2,0) {};
+			\node[circle,fill,inner sep=2pt] at (axis cs:0.9,-0.45) {};
+			\fill[thick, purple] (0.9, -0.225) circle[radius=3pt] node[below] {\tiny $M_\text{h}(x^*)$};
+			\addplot [
+				dotted, 
+				line width=1pt, 
+				black] coordinates {(.9, -1) (.9, 3)};
+			\addplot [
+				smooth, 
+				line width=1pt, 
+				black] coordinates {(.8, -0.225) (1, -0.225)};
+
+			\addplot[name path=C,
+				domain=\a + \b:\a + \b + \c, 
+				smooth, 
+				line width=2pt, 
+				blue, 
+				] {2.5*x^2-8.5*x+6.6};
+			\addplot[
+				domain=\a + \b:\a + \b + \c, 
+				dotted, 
+				line width=1pt, 
+				black, 
+				] {-(5/2)*x+3};
+			\addplot[
+				domain=\a + \b:\a + \b + \c, 
+				dotted, 
+				line width=1pt, 
+				black, 
+				] {(5/2)*x-5.5};
+			\node[circle,fill,inner sep=2pt] at (axis cs:1.7,-0.625) {};
+			\node[circle,fill,inner sep=2pt] at (axis cs:1.7,-1.25) {};
+			\addplot [
+				smooth, 
+				line width=1pt, 
+				black] coordinates {(1.6, -0.625) (1.8, -0.625)};
+
+			
+			\path [name path=AG]
+				(\pgfkeysvalueof{/pgfplots/xmin},0) --
+				(\a,0);
+			\path [name path=BG]
+				(\a,0) --
+				(\a + \b,0);
+			\path [name path=CG]
+				(\a + \b,0) --
+				(\a + \b + \c,0);
+			\addplot [pattern=vertical lines, pattern color=blue] fill between [of=A and AG];
+			\addplot [pattern=vertical lines, pattern color=blue] fill between [of=B and BG];
+			\addplot [pattern=vertical lines, pattern color=blue] fill between [of=C and CG];
+		\end{axis}
+
+        \end{tikzpicture}
+\end{center}
+
+\break
+
+\subsection{Függöleges rúd}
+\begin{center}
+        \begin{tikzpicture}
+		\pgfmathsetmacro{\drawlength}{20}
+		\draw[line width = 0.1mm, opacity=.3] (A) -- ++(0, -\drawlength);
+		\draw[line width = 0.1mm, opacity=.3] (B)++(0,-\ks) -- ++(0, -\drawlength);
+
+		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (A)++(0,-2) -- ($ (B) + (0,-\ks-2) $) node[midway, below] {k};
+
+		\draw[line width = \framewidth, arrows = {-}] (A) -- ($ (B) + (0, -\ks) $);
+		\draw[line width = 0.1mm] (\as + \bs + \cs, 0) -- ++(0,-2);
+
+		\draw[line width = .8mm, arrows = {-Stealth}, green] (\as + \bs + \cs, -\Bxs) -- ++(0,\Bxs) node[midway, above, anchor=south east] {$B_\text{x}$};
+
+		\draw[thick,->,gray] (0,0) -- ++(2,0) node[anchor=north west] {$x_\text{2}$};
+		\draw[thick,->,gray] (0,0) -- ++(0,2) node[anchor=south east] {y};
+
+		\begin{axis}[
+			xlabel=$x_\text{2} \si{[m]}$, ylabel=$V(x_\text{2}) \si{[kN]}$,
+			width=15.2cm,
+			height=5cm,
+			xmin=0, xmax=\k,
+			ymin=0, ymax=6.25,
+			ytick={0, ..., 5, 6.25},
+			xtick={\k},
+			axis lines = left,
+			axis x line = middle,
+			every axis x label/.style={
+				at={(ticklabel* cs:1)},
+				anchor=west,
+			},
+			at={(0cm,-9cm)}
+			]
+			\addplot[name path=A,
+				domain=0:\k, 
+				smooth, 
+				line width=2pt, 
+				orange, 
+			] {6.25};
+			\path [name path=B]
+				(\pgfkeysvalueof{/pgfplots/xmin},0) --
+				(\pgfkeysvalueof{/pgfplots/xmax},0);
+			\addplot [pattern=vertical lines, pattern color=orange] fill between [of=A and B];
+		\end{axis}
+
+		\begin{axis}[
+			xlabel=$x_\text{2} \si{[m]}$, ylabel=$M_h(x_\text{2}) \si{[kNm]}$,
+			width=15.2cm,
+			height=5cm,
+			xmin=0, xmax=\k,
+			xtick={\k},
+			axis lines = left,
+			axis x line = middle,
+			every axis x label/.style={
+				at={(ticklabel* cs:1)},
+				anchor=west,
+			},
+			at={(0cm,-18cm)}
+			]
+			\addplot[name path=A,
+				domain=0:\k, 
+				smooth, 
+				line width=2pt, 
+				blue, 
+				] {-6.25*x+0.625};
+			\path [name path=B]
+				(\pgfkeysvalueof{/pgfplots/xmin},0) --
+				(\pgfkeysvalueof{/pgfplots/xmax},0);
+			\addplot [pattern=vertical lines, pattern color=blue] fill between [of=A and B];
+		\end{axis}
+        \end{tikzpicture}
+\end{center}

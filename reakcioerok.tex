@@ -17,3 +17,73 @@
 
 \subsection{SZTÁ}
 \input{szta.tex}
+
+\break
+
+\subsection{Egyensúlyi egyenletek}
+
+\begin{align*}
+	F_\text{p}(x) &= p \times x \\
+	{F_\text{p}}_{\text{max}} &= F_\text{p}(b+c) = \pnum{\Fp} \si{[kN]}
+\end{align*}
+
+\begin{align*}
+	&\sum{F_\text{x}} := 0 = A_\text{x} + B_\text{x} \\
+	&\sum{F_\text{y}} := 0 = A_\text{y} + F - {F_\text{p}}_{\text{max}}  \\
+	&\sum{M^{_\text{A}}_\text{z}} := 0 = M_\text{A} - F_\text{p}(a + \frac{b+c}{2}) + F \times (a+b) - B_\text{x} \times k
+\end{align*}
+
+$$
+A_\text{y} = {F_\text{p}}_{\text{max}} - F = 1.5 \si{[kN]}
+$$
+
+3 ismeretlen és 2 egyenlet maradt tehát a szerkezetet részekre kell bontanunk.
+
+\subsection{Részek vizsgálata}
+
+A \textcolor{orange}{$\mathbf{C}$} pontban kettévágva a rácsszerkezetet részenként vizsgálhatom (így ezen pont mindkét ábrának része). Az ebben a pontban ébredő belső reakcióerőket a két részen ellentétesen veszem fel \textbf{Newton III. törvénye} (hatás-ellenhatás) miatt.
+
+\begin{multicols}{2}
+
+\subsubsection{}
+\begin{center}
+        \begin{tikzpicture}
+                \strucframeone
+                \strucrestrainforcesone
+                \foreach \point in {C} {
+                        \fill[thick, cyan] (\point) circle[radius=4pt];
+                }
+                \struccutforcesone
+        \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+	&\sum{F_\text{x}} := 0 = A_\text{x} + C_\text{x} \\
+	&\sum{F_\text{y}} := 0 = A_\text{y} + C_\text{y} \\
+	&\sum{M^{_\text{C}}_\text{z}} := 0 = -A_\text{y} \times a + M_\text{A}
+\end{align*}
+
+\begin{align*}
+\end{align*}
+
+\subsubsection{}
+\begin{center}
+        \begin{tikzpicture}
+                \strucframetwo
+                \strucforcestwo
+                \strucsharedforcestwo
+                \strucrestrainforcestwo
+                \foreach \point in {C} {
+                        \fill[thick, cyan] (\point) circle[radius=4pt];
+                }
+                \struccutforcestwo
+        \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+\end{align*}
+
+\begin{align*}
+\end{align*}
+
+\end{multicols}

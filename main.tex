@@ -20,7 +20,9 @@
 
 \usepackage{pgf}
 \usepackage{tikz}
-\usetikzlibrary {arrows.meta, decorations.markings, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary {arrows.meta, decorations.markings, calc, patterns, pgfplots.fillbetween}
 
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{%
@@ -51,7 +53,15 @@
 \pgfmathsetmacro{\c}{0.5}
 \pgfmathsetmacro{\k}{0.1}
 \pgfmathsetmacro{\p}{5}
+\pgfmathsetmacro{\Fp}{\p * (\b+\c)}
 \pgfmathsetmacro{\F}{4}
+
+\pgfmathsetmacro{\Ay}{\Fp - \F}
+\pgfmathsetmacro{\Cy}{-\Ay}
+\pgfmathsetmacro{\Ma}{\Ay * \a}
+\pgfmathsetmacro{\Bx}{(\F * \b - \p * ((\b+\c)/2))/\k}
+\pgfmathsetmacro{\Cx}{\Bx}
+\pgfmathsetmacro{\Ax}{-\Cx}
 
 \newcommand{\pnum}[1]{%
 	\pgfmathprintnumber[fixed]{#1}
@@ -61,12 +71,14 @@
 
 \include{structgraphs.tex}
 
-% \includepdf[pages={1}]{sthf4-final.pdf}
+\includepdf[pages={1}]{st4hf-final.pdf}
 
 \maketitle
 
 \include{reakcioerok.tex}
+
 \include{igenybevetel.tex}
+
 \include{igenybevetelabrak.tex}
 
 \end{document}
