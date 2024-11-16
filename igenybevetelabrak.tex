@@ -3,6 +3,50 @@
 \pgfmathsetmacro{\framewidth}{.7mm}
 
 \subsection{Vízszintes rúd}
+
+% FIXME: equations dont care about variables
+\subsubsection{Parabola szerkesztése}
+
+$${M'}_\text{h} = -V$$
+\begin{tabularx}{\textwidth}{X | X}
+	\makecell{$2.5x^2 - 4.5x + 1.8$} & \makecell{$2.5x^2 - 4.5x + 1.8$} \\
+	\hline
+	\makecell{
+		$\begin{array}{rl}
+	    & x_\text{1} = 0.6 \\
+	    & x_\text{2} = 1.2 \\
+	    \hline
+	    & m_\text{1} = {M'}_\text{h}(x)|_{x=x_\text{1}} = -\frac{3}{2} \\
+			\Rightarrow & m_\text{1} : -\frac{3}{2} \times x + 0.9 \\
+				    & m_\text{2} = {M'}_\text{h}(x)|_{x=x_\text{2}} = \frac{3}{2} \\
+			\Rightarrow & m_\text{2} : \frac{3}{2} \times x - 1.8 \\
+				    & y_\text{0} = M_\text{h}(\frac{x_\text{1} + x_\text{2}}{2}) = -0.225 \\
+	    \hline
+				    &M'_\text{h}(x^*) = 0 \\
+				    &x^* = 0.9 \\
+				    &M_\text{h}(x^*) = -0.225
+		\end{array}$
+	} & 
+	\makecell{
+		$\begin{array}{rl}
+	    & x_\text{1} = 1.2 \\
+	    & x_\text{2} = 2.2 \\
+	    \hline
+	    & m_\text{1} = {M'}_\text{h}(x)|_{x=x_\text{1}} = -\frac{5}{2} \\
+			\Rightarrow & m_\text{1} : -\frac{5}{2} \times x + 3 \\
+				    & m_\text{2} = {M'}_\text{h}(x)|_{x=x_\text{2}} = \frac{5}{2} \\
+			\Rightarrow & m_\text{2} : \frac{5}{2} \times x - 5.5 \\
+				    & y_\text{0} = M_\text{h}(\frac{x_\text{1} + x_\text{2}}{2}) = -0.46875 \\
+	    \hline
+				    &M'_\text{h}(x_\text{0}) = 0 \\
+				    &x_\text{0} = 1.7
+		\end{array}$
+	} \\
+\end{tabularx}
+
+\break
+
+\subsubsection{Igénybevételi ábrák}
 \begin{center}
         \begin{tikzpicture}
 		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (A)++(0,-2) -- ($ (C) + (0,-2) $) node[midway, below] {a};
@@ -204,6 +248,8 @@
 \break
 
 \subsection{Függöleges rúd}
+
+\subsubsection{Igénybevételi ábrák}
 \begin{center}
         \begin{tikzpicture}
 		\pgfmathsetmacro{\drawlength}{20}

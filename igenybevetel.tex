@@ -1,5 +1,8 @@
 \section{Igénybevételi függvények}
 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
 \newcommand{\strucstresscoorded}{%
 	\draw[thick,->,gray] (0,0) -- ++(2,0) node[anchor=north west] {$x_\text{1}$};
 	\draw[thick,->,gray] (0,0) -- ++(0,2) node[anchor=south east] {y};
@@ -20,8 +23,68 @@
         \begin{tikzpicture}
 		\strucstresscoorded
         \end{tikzpicture}
+	% TODO: sign convention
 \end{center}
 
-% tables
+\subsection{Függvények felírása}
+\begin{center}
+        \def\arraystretch{1.5}%
+        \begin{tabular}{| c | c | c | c | c |} 
+                \hline
+                & \circled{1} & \circled{1} & \circled{1} & \circled{2} \\
+                & \makecell{$0 \leq x_\text{1} \leq a$} & 
+                  \makecell{$a \leq x_\text{1} \leq a+b$} & 
+                  \makecell{$a + b \leq x_\text{1} \leq a+b+c$} & 
+                  \makecell{$0 \leq x_\text{2} \leq k$} \\
+                \hline
+                $N(x)$ & $-A_\text{x}$ & $-A_\text{x}$ & $-A_\text{x}$ & 0 \\
+                \hline
+                $V(x)$ & $A_\text{y}$ & 
+                  \makecell{$A_\text{y}-F_\text{p}(x_\text{1})$} & 
+                  \makecell{$A_\text{y}-F_\text{p}(x_\text{1})$ \\ $+ F$} & 
+                  $-B_\text{x}$ \\
+                \hline
+                $M_\text{h}(x)$ & 
+                  \makecell{$M_\text{A}-A_\text{y} \times x_\text{1}$} & 
+                  \makecell{$M_\text{A}-A_\text{y} \times x_\text{1}$ \\ $+ F_\text{p}(x_\text{1} - a) \times \frac{x_\text{1} - a}{2}$} & 
+                  \makecell{$M_\text{A}-A_\text{y} \times x_\text{1}$ \\ $+ F_\text{p}(x_\text{1} - a) \times \frac{x_\text{1} - a}{2}$ \\ $- F \times (x_\text{1} - (a+b))$} & 
+                  \makecell{$-B_\text{x} \times (k-x_\text{2})$} \\
+                \hline
+                $M_\text{t}(x)$ & 0 & 0 & 0 & 0 \\
+                \hline
+        \end{tabular}
+\end{center}
+
+\subsection{Átrendezés}
+% FIXME: not every equation uses the given variables
+\begin{center}
+        \def\arraystretch{1.5}%
+	\pgfmathsetmacro{\sumab}{\a+\b}
+	\pgfmathsetmacro{\sumabc}{\a+\b+\c}
+        \begin{tabular}{| c | c | c | c | c |} 
+                \hline
+                & \circled{1} & \circled{1} & \circled{1} & \circled{2} \\
+		& \makecell{$0 \leq x_\text{1} \leq \pnum{\a}$} & 
+		\makecell{$a \leq x_\text{1} \leq \pnum{\sumab}$} & 
+                  \makecell{$a + b \leq x_\text{1} \leq \pnum{\sumabc}$} & 
+		  \makecell{$0 \leq x_\text{2} \leq \pnum{\k}$} \\
+                \hline
+		  $N(x)$ & $-\pnum{\Ax}$ & $-\pnum{\Ax}$ & $-\pnum{\Ax}$ & 0 \\
+                \hline
+		  $V(x)$ & $\pnum{\Ay}$ & 
+		  \makecell{$-5x_\text{1}+4.5$} & 
+                  \makecell{$-5x_\text{1}+8.5$} & 
+		  $6.25$ \\
+                \hline
+                $M_\text{h}(x)$ & 
+		\makecell{$ -1.5x_\text{1}+0.9$} & 
+		\makecell{$2.5x_\text{1}^2-4.5x_\text{1}+1.8$} & 
+                  \makecell{$2.5x_\text{1}^2-8.5x_\text{1}+6.6$} & 
+		  \makecell{$-6.25x_\text{2}+0.625$} \\
+                \hline
+                $M_\text{t}(x)$ & 0 & 0 & 0 & 0 \\
+                \hline
+        \end{tabular}
+\end{center}
 
 % explanations

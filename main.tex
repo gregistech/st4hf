@@ -7,6 +7,8 @@
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{multicol}
+\usepackage{makecell}
+\usepackage{tabularx}
 \usepackage{bm}
 \usepackage{pdfpages}
 
@@ -59,7 +61,7 @@
 \pgfmathsetmacro{\Ay}{\Fp - \F}
 \pgfmathsetmacro{\Cy}{-\Ay}
 \pgfmathsetmacro{\Ma}{\Ay * \a}
-\pgfmathsetmacro{\Bx}{(\F * \b - \p * ((\b+\c)/2))/\k}
+\pgfmathsetmacro{\Bx}{(\F * \b - \Fp * ((\b+\c)/2))/\k}
 \pgfmathsetmacro{\Cx}{\Bx}
 \pgfmathsetmacro{\Ax}{-\Cx}
 
