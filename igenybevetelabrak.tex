@@ -1,4 +1,5 @@
-\section{Igénybevételi ábrák}
+\section[\texorpdfstring{Igénybevételi ábrák}{Igénybevételi ábrák}]%
+{Igénybevételi ábrák\protect\footnote{A konstant 0 függvények nem kerültek ábrázolásra.}}
 
 \pgfmathsetmacro{\framewidth}{.7mm}
 
@@ -7,7 +8,35 @@
 % FIXME: equations dont care about variables
 \subsubsection{Parabola szerkesztése}
 
-$${M'}_\text{h} = -V$$
+
+A véges differenciák módszere itt abban nyújt segítséget hogy a derivált értékét numerikusan közelíthetjük, különösen ha a függvény nem analitikus hanem diszkrét pontokból áll. Például ha a parabola értékei $f(x)$ egy adott $x_0$ pont környezetében ismertek akkor a deriváltat közelíthetjük előre (előre differencia), hátra (hátra differencia), vagy közép differenciával.
+
+\vskip 20pt
+
+\begin{itemize}
+	\item \textbf{Előre differencia:}
+		$f'(x_0) \approx \frac{f(x_0 + h) - f(x_0)}{h}$
+
+	\item \textbf{Hátra differencia:}
+		$f'(x_0) \approx \frac{f(x_0) - f(x_0 - h)}{h}$
+
+	\item \textbf{Közép differencia:}
+		$f'(x_0) \approx \frac{f(x_0 + h) - f(x_0 - h)}{2h}$
+\end{itemize}
+
+\vskip 20pt
+
+A közép differencia módszer különösen pontos mert elsőrendű hibákat eliminál és így gyorsabban közelíti az analitikus deriváltat. Ezekkel a módszerekkel a parabola pontjaira és érintőire numerikus módon, a véges differenciák segítségével is jó közelítést adhatunk ami különösen hasznos diszkrét adathalmazok vagy numerikus modellek esetében.
+
+A megfelelő szélsőértékek megállapítása után ezen pontokban kiszámolhatjuk a parabola érintőinek meredekségét (és ezzel egyenletük egyszerűbb ábrázolás érdekében). Ezt az ${M'}_\text{h} = -V$ összefüggéssel egyszerűen megtehejük.
+
+Megnézve hol a derivált zérushelye (parabolánál mindig a középvonalra esik) abban az $x_\text{0}$-ban kiszámítjuk a függvény értékét.
+
+Ezekkel az adatokkal felvértezve már egy egész jó közelítést adhatunk a parabola pontjaira.
+
+\vskip 100pt
+
+\begin{center}
 \begin{tabularx}{\textwidth}{X | X}
 	\makecell{$2.5x^2 - 4.5x + 1.8$} & \makecell{$2.5x^2 - 4.5x + 1.8$} \\
 	\hline
@@ -41,12 +70,14 @@ $${M'}_\text{h} = -V$$
 				    &M'_\text{h}(x_\text{0}) = 0 \\
 				    &x_\text{0} = 1.7
 		\end{array}$
-	} \\
+	}
 \end{tabularx}
+\end{center}
 
 \break
 
 \subsubsection{Igénybevételi ábrák}
+
 \begin{center}
         \begin{tikzpicture}
 		\draw[line width = 0.2mm, arrows = {Latex-Latex}] (A)++(0,-2) -- ($ (C) + (0,-2) $) node[midway, below] {a};
