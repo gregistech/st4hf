@@ -178,46 +178,46 @@
 }
 
 \newcommand{\strucrestrainforcesa}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A) -- ++(\Axs, 0) node[midway, above, anchor=south east] {$A_\text{x}$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(0, -\Ays) -- (A)  node[midway, above, anchor=south east] {$A_\text{y}$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(-.5, 1) to [bend right] node[midway, above] {$M_\text{A}$} ++(1,0);
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A) -- ++(\Axs, 0) node[midway, above, anchor=south east] {$A_\text{x}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A)++(0, -\Ays) -- (A)  node[midway, above, anchor=south east] {$A_\text{y}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A)++(-.5, 1) to [bend right] node[midway, above] {$M_\text{A}$} ++(1,0);
 }
 \newcommand{\strucrestrainforcesb}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B)++(\Bxs, 0) -- (B) node[midway, above, anchor=south east] {$B_\text{x}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (B)++(\Bxs, 0) -- (B) node[midway, above, anchor=south east] {$B_\text{x}$};
 }
 \newcommand{\strucrestrainforces}{%
 	\strucrestrainforcesa
 	\strucrestrainforcesb
 }
 \newcommand{\strucrestrainforcesone}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A) -- ++(\Axsp, 0) node[midway, above, anchor=south east] {$A_\text{x}$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(0, -\Aysp) -- (A)  node[midway, right] {$A_\text{y}$};
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (A)++(-.5, 1) to [bend right] node[midway, above] {$M_\text{A}$} ++(1,0);
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A) -- ++(\Axsp, 0) node[midway, above, anchor=south east] {$A_\text{x}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A)++(0, -\Aysp) -- (A)  node[midway, right] {$A_\text{y}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (A)++(-.5, 1) to [bend right] node[midway, above] {$M_\text{A}$} ++(1,0);
 }
 \newcommand{\strucrestrainforcestwo}{%
-	\draw[line width = .8mm, arrows = {-Stealth}, green] (B)++(\Bxsp, 0) -- (B) node[midway, above, anchor=south east] {$B_\text{x}$};
+	\draw[line width = .8mm, arrows = {-Stealth}, olive] (B)++(\Bxsp, 0) -- (B) node[midway, above, anchor=south east] {$B_\text{x}$};
 }
 
 \newcommand{\strucrestraints}{%
 	\pgfmathsetmacro{\restrainsize}{.4}
-	\draw[line width = .4mm, green] (A)++(0, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
-	\draw[line width = .4mm, green] (A)++(0, 0.4) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(0, 0.2) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(0, 0) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(0, -0.2) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(0, -0.4) -- ++(-0.2, .2);
-	\draw[line width = .4mm, green] (A)++(0, -0.6) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
+	\draw[line width = .4mm, olive] (A)++(0, 0.4) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, 0.2) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, 0) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, -0.2) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, -0.4) -- ++(-0.2, .2);
+	\draw[line width = .4mm, olive] (A)++(0, -0.6) -- ++(-0.2, .2);
 
-        \draw[line width = .4mm, green] (B) -- ++(\restrainsize, \restrainsize) -- ++(0, -\restrainsize * 2) -- cycle;
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
-	\draw[line width = 0.4mm, green] (B)++(.5,0) circle (.1);
+        \draw[line width = .4mm, olive] (B) -- ++(\restrainsize, \restrainsize) -- ++(0, -\restrainsize * 2) -- cycle;
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize, \restrainsize*1.5) -- ++(0, -\restrainsize * 2 * 1.5);
+	\draw[line width = 0.4mm, olive] (B)++(.5,0) circle (.1);
 
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, 0.4) -- ++(-0.2, .2);
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, 0.2) -- ++(-0.2, .2);
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, 0) -- ++(-0.2, .2);
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, -0.2) -- ++(-0.2, .2);
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, -0.4) -- ++(-0.2, .2);
-        \draw[line width = .4mm, green] (B)++(.2+\restrainsize+.2, -0.6) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, 0.4) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, 0.2) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, 0) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, -0.2) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, -0.4) -- ++(-0.2, .2);
+        \draw[line width = .4mm, olive] (B)++(.2+\restrainsize+.2, -0.6) -- ++(-0.2, .2);
 }
 
 \newcommand{\struccutforcesone}{%

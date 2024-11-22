@@ -28,7 +28,7 @@ A véges differenciák módszere itt abban nyújt segítséget hogy a derivált 
 
 A közép differencia módszer különösen pontos mert elsőrendű hibákat eliminál és így gyorsabban közelíti az analitikus deriváltat. Ezekkel a módszerekkel a parabola pontjaira és érintőire numerikus módon, a véges differenciák segítségével is jó közelítést adhatunk ami különösen hasznos diszkrét adathalmazok vagy numerikus modellek esetében.
 
-A megfelelő szélsőértékek megállapítása után ezen pontokban kiszámolhatjuk a parabola érintőinek meredekségét (és ezzel egyenletük egyszerűbb ábrázolás érdekében). Ezt az ${M'}_\text{h} = -V$ összefüggéssel egyszerűen megtehejük.
+A megfelelő szélsőértékek megállapítása után ezen pontokban kiszámolhatjuk a parabola érintőinek meredekségét (egyenletük egyszerűbb ábrázolás érdekében). Ezt az ${M'}_\text{h} = -V$ összefüggéssel egyszerűen megtehetjük.
 
 Megnézve hol a derivált zérushelye (parabolánál mindig a középvonalra esik) abban az $x_\text{0}$-ban kiszámítjuk a függvény értékét.
 
@@ -143,19 +143,19 @@ Ezekkel az adatokkal felvértezve már egy egész jó közelítést adhatunk a p
 				domain=0:\a, 
 				smooth, 
 				line width=2pt, 
-				green, 
+				olive, 
 				] {1.5};
 			\addplot[name path=B,
 				domain=\a:\a + \b, 
 				smooth, 
 				line width=2pt, 
-				green, 
+				olive, 
 				] {-5*x+4.5};
 			\addplot[name path=C,
 				domain=\a + \b:\a + \b + \c, 
 				smooth, 
 				line width=2pt, 
-				green, 
+				olive, 
 				] {-5*x+8.5};
 			\path [name path=AG]
 				(\pgfkeysvalueof{/pgfplots/xmin},0) --
@@ -166,9 +166,9 @@ Ezekkel az adatokkal felvértezve már egy egész jó közelítést adhatunk a p
 			\path [name path=CG]
 				(\a + \b,0) --
 				(\a + \b + \c,0);
-			\addplot [pattern=vertical lines, pattern color=green] fill between [of=A and AG];
-			\addplot [pattern=vertical lines, pattern color=green] fill between [of=B and BG];
-			\addplot [pattern=vertical lines, pattern color=green] fill between [of=C and CG];
+			\addplot [pattern=vertical lines, pattern color=olive] fill between [of=A and AG];
+			\addplot [pattern=vertical lines, pattern color=olive] fill between [of=B and BG];
+			\addplot [pattern=vertical lines, pattern color=olive] fill between [of=C and CG];
 		\end{axis}
 
 		\begin{axis}[
@@ -292,7 +292,7 @@ Ezekkel az adatokkal felvértezve már egy egész jó közelítést adhatunk a p
 		\draw[line width = \framewidth, arrows = {-}] (A) -- ($ (B) + (0, -\ks) $);
 		\draw[line width = 0.1mm] (\as + \bs + \cs, 0) -- ++(0,-2);
 
-		\draw[line width = .8mm, arrows = {-Stealth}, green] (\as + \bs + \cs, -\Bxs) -- ++(0,\Bxs) node[midway, above, anchor=south east] {$B_\text{x}$};
+		\draw[line width = .8mm, arrows = {-Stealth}, olive] (\as + \bs + \cs, -\Bxs) -- ++(0,\Bxs) node[midway, above, anchor=south east] {$B_\text{x}$};
 
 		\draw[thick,->,gray] (0,0) -- ++(2,0) node[anchor=north west] {$x_\text{2}$};
 		\draw[thick,->,gray] (0,0) -- ++(0,2) node[anchor=south east] {y};
